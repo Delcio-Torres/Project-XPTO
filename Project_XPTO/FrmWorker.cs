@@ -16,15 +16,19 @@ namespace Project_XPTO
 
       private void FrmWorker_Load(object sender, EventArgs e)
       {
-
       }
 
       private void InsertWorker_Click(object sender, System.EventArgs e) 
       {
-
-         cx.InsertWorker(new Worker { Nome = "Delcio de Abreu Torres", Email = "delcio.at@gmail.com", DataNascimeto = Convert.ToDateTime("26/04/1963"), Cpf = 71843752620 });
+         Worker worker = new Worker
+         {
+            Nome = txtNome.Text,
+            Email = txtEmail.Text,
+            Cpf = Convert.ToDecimal(mskCpf.Text),
+            DataNascimeto = Convert.ToDateTime(mskDataNascimento.Text)
+         };
+         cx.InsertWorker(worker);
          MessageBox.Show("Tudo Certo");
       }
-
    }
 }

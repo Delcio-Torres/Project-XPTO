@@ -29,8 +29,8 @@ namespace Project_XPTO
       /// </summary>
       private void InitializeComponent()
       {
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
          this.button1 = new System.Windows.Forms.Button();
          this.txtNome = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
@@ -54,7 +54,7 @@ namespace Project_XPTO
          this.button1.Location = new System.Drawing.Point(70, 112);
          this.button1.Name = "button1";
          this.button1.Size = new System.Drawing.Size(75, 23);
-         this.button1.TabIndex = 0;
+         this.button1.TabIndex = 4;
          this.button1.Text = "Salvar";
          this.button1.UseVisualStyleBackColor = true;
          this.button1.Click += new System.EventHandler(this.InsertWorker_Click);
@@ -64,7 +64,7 @@ namespace Project_XPTO
          this.txtNome.Location = new System.Drawing.Point(70, 29);
          this.txtNome.Name = "txtNome";
          this.txtNome.Size = new System.Drawing.Size(177, 20);
-         this.txtNome.TabIndex = 1;
+         this.txtNome.TabIndex = 0;
          // 
          // label1
          // 
@@ -117,7 +117,8 @@ namespace Project_XPTO
          this.mskCpf.PasswordChar = '*';
          this.mskCpf.PromptChar = ' ';
          this.mskCpf.Size = new System.Drawing.Size(100, 20);
-         this.mskCpf.TabIndex = 3;
+         this.mskCpf.TabIndex = 2;
+         this.mskCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
          // 
          // mskDataNascimento
          // 
@@ -152,8 +153,8 @@ namespace Project_XPTO
          // 
          // Column1
          // 
-         dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+         dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
          this.Column1.HeaderText = "ID";
          this.Column1.Name = "Column1";
          this.Column1.Width = 30;
@@ -172,10 +173,10 @@ namespace Project_XPTO
          // 
          // Column4
          // 
-         dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle2.Format = "999,999,999-99";
-         dataGridViewCellStyle2.NullValue = null;
-         this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
+         dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle8.Format = "999,999,999-99";
+         dataGridViewCellStyle8.NullValue = null;
+         this.Column4.DefaultCellStyle = dataGridViewCellStyle8;
          this.Column4.HeaderText = "CPF";
          this.Column4.Name = "Column4";
          this.Column4.Width = 80;
