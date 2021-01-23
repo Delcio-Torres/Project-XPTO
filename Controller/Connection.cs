@@ -9,7 +9,7 @@ namespace Controller
       private SQLiteConnection cx = new SQLiteConnection();
       private SQLiteCommand com = new SQLiteCommand();
 
-      string path = $"Data Source = {AppDomain.CurrentDomain.BaseDirectory}BD_XPTO.db";
+      string path = $"Data Source = {AppDomain.CurrentDomain.BaseDirectory}/DB/DB_XPTO.db";
 
       public void OpenDB()
       {
