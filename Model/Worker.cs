@@ -9,7 +9,6 @@ namespace Model
       public string Email { get; set; }
       public string DataNascimeto { get; set; }
       public string Cpf { get; set; }
-
    }
 }
 

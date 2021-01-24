@@ -46,7 +46,6 @@ namespace Controller
          SQLiteDataReader dr = com.ExecuteReader();
 
          List<Worker> workerList = new List<Worker>();
-         
 
          while (dr.Read())
          {

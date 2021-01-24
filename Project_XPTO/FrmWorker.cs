@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Globalization;
-using System.Collections.Generic;
 using Model;
 using Controller;
 using System.Windows.Forms;
@@ -15,10 +13,6 @@ namespace Project_XPTO
       {
          InitializeComponent();
          PreencheDataGrid();
-      }
-
-      private void FrmWorker_Load(object sender, EventArgs e)
-      {
       }
 
       private void InsertWorker_Click(object sender, System.EventArgs e)
@@ -48,12 +42,6 @@ namespace Project_XPTO
                Convert.ToUInt64(teste.Cpf).ToString(@"000\.000\.000\-00"),
                Convert.ToUInt64(teste.DataNascimeto).ToString(@"00\/00\/0000"));
          }
-      }
-
-      private void button3_Click(object sender, EventArgs e)
-      {
-         DateTime d1 = Convert.ToDateTime(mskDataNascimento.Text);
-         MessageBox.Show(d1.ToString("dd/MM/yyyy"));
       }
    }
 }
