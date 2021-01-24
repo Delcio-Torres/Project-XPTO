@@ -29,8 +29,9 @@ namespace Project_XPTO
       /// </summary>
       private void InitializeComponent()
       {
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
          this.button1 = new System.Windows.Forms.Button();
          this.txtNome = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
@@ -41,6 +42,8 @@ namespace Project_XPTO
          this.mskCpf = new System.Windows.Forms.MaskedTextBox();
          this.mskDataNascimento = new System.Windows.Forms.MaskedTextBox();
          this.dgWorker = new System.Windows.Forms.DataGridView();
+         this.button2 = new System.Windows.Forms.Button();
+         this.button3 = new System.Windows.Forms.Button();
          this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -112,9 +115,8 @@ namespace Project_XPTO
          // mskCpf
          // 
          this.mskCpf.Location = new System.Drawing.Point(70, 73);
-         this.mskCpf.Mask = "999,999,999-00";
+         this.mskCpf.Mask = "000,000,000-00";
          this.mskCpf.Name = "mskCpf";
-         this.mskCpf.PasswordChar = '*';
          this.mskCpf.PromptChar = ' ';
          this.mskCpf.Size = new System.Drawing.Size(100, 20);
          this.mskCpf.TabIndex = 2;
@@ -127,6 +129,7 @@ namespace Project_XPTO
          this.mskDataNascimento.Name = "mskDataNascimento";
          this.mskDataNascimento.Size = new System.Drawing.Size(100, 20);
          this.mskDataNascimento.TabIndex = 3;
+         this.mskDataNascimento.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
          // 
          // dgWorker
          // 
@@ -145,46 +148,79 @@ namespace Project_XPTO
             this.Column4,
             this.Column5});
          this.dgWorker.Dock = System.Windows.Forms.DockStyle.Bottom;
+         this.dgWorker.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
          this.dgWorker.Location = new System.Drawing.Point(0, 145);
          this.dgWorker.Name = "dgWorker";
          this.dgWorker.RowHeadersVisible = false;
+         this.dgWorker.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
          this.dgWorker.Size = new System.Drawing.Size(558, 177);
          this.dgWorker.TabIndex = 6;
+         this.dgWorker.TabStop = false;
+         // 
+         // button2
+         // 
+         this.button2.Location = new System.Drawing.Point(0, 0);
+         this.button2.Name = "button2";
+         this.button2.Size = new System.Drawing.Size(75, 23);
+         this.button2.TabIndex = 7;
+         this.button2.Text = "button2";
+         this.button2.UseVisualStyleBackColor = true;
+         // 
+         // button3
+         // 
+         this.button3.Location = new System.Drawing.Point(437, 81);
+         this.button3.Name = "button3";
+         this.button3.Size = new System.Drawing.Size(75, 23);
+         this.button3.TabIndex = 8;
+         this.button3.Text = "button3";
+         this.button3.UseVisualStyleBackColor = true;
+         this.button3.Click += new System.EventHandler(this.button3_Click);
          // 
          // Column1
          // 
-         dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
+         dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle4.Format = "0000";
+         dataGridViewCellStyle4.NullValue = null;
+         this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
          this.Column1.HeaderText = "ID";
          this.Column1.Name = "Column1";
-         this.Column1.Width = 30;
+         this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+         this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+         this.Column1.Width = 50;
          // 
          // Column2
          // 
          this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
          this.Column2.HeaderText = "Nome";
          this.Column2.Name = "Column2";
+         this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
          // 
          // Column3
          // 
          this.Column3.HeaderText = "Email";
          this.Column3.Name = "Column3";
+         this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
          this.Column3.Width = 130;
          // 
          // Column4
          // 
-         dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle8.Format = "999,999,999-99";
-         dataGridViewCellStyle8.NullValue = null;
-         this.Column4.DefaultCellStyle = dataGridViewCellStyle8;
+         dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle5.Format = "999,999,999-99";
+         dataGridViewCellStyle5.NullValue = null;
+         this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
          this.Column4.HeaderText = "CPF";
          this.Column4.Name = "Column4";
-         this.Column4.Width = 80;
+         this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
          // 
          // Column5
          // 
+         dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle6.Format = "##/##/####";
+         dataGridViewCellStyle6.NullValue = null;
+         this.Column5.DefaultCellStyle = dataGridViewCellStyle6;
          this.Column5.HeaderText = "Data de Nascimento";
          this.Column5.Name = "Column5";
+         this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
          this.Column5.Width = 128;
          // 
          // FrmWorker
@@ -192,6 +228,8 @@ namespace Project_XPTO
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(558, 322);
+         this.Controls.Add(this.button3);
+         this.Controls.Add(this.button2);
          this.Controls.Add(this.dgWorker);
          this.Controls.Add(this.mskDataNascimento);
          this.Controls.Add(this.mskCpf);
@@ -224,6 +262,8 @@ namespace Project_XPTO
       private System.Windows.Forms.MaskedTextBox mskCpf;
       private System.Windows.Forms.MaskedTextBox mskDataNascimento;
       private System.Windows.Forms.DataGridView dgWorker;
+      private System.Windows.Forms.Button button2;
+      private System.Windows.Forms.Button button3;
       private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
       private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
       private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
