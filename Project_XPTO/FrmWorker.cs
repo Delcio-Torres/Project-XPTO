@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Model;
 using Controller;
 using System.Windows.Forms;
@@ -22,7 +23,7 @@ namespace Project_XPTO
             Nome = txtNome.Text,
             Email = txtEmail.Text,
             Cpf = mskCpf.Text,
-            DataNascimeto = mskDataNascimento.Text
+            DataNascimeto = DateTime.ParseExact(mskDataNascimento.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)
          };
          cx.InsertWorker(worker);
          PreencheDataGrid();
@@ -40,7 +41,8 @@ namespace Project_XPTO
                teste.Nome,
                teste.Email,
                Convert.ToUInt64(teste.Cpf).ToString(@"000\.000\.000\-00"),
-               Convert.ToUInt64(teste.DataNascimeto).ToString(@"00\/00\/0000"));
+               teste.DataNascimeto.ToString("dd/MM/yyyy")
+            );
          }
       }
    }

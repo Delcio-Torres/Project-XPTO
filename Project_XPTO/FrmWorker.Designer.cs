@@ -29,9 +29,9 @@ namespace Project_XPTO
       /// </summary>
       private void InitializeComponent()
       {
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
          this.button1 = new System.Windows.Forms.Button();
          this.txtNome = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
@@ -127,7 +127,6 @@ namespace Project_XPTO
          this.mskDataNascimento.Name = "mskDataNascimento";
          this.mskDataNascimento.Size = new System.Drawing.Size(100, 20);
          this.mskDataNascimento.TabIndex = 3;
-         this.mskDataNascimento.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePrompt;
          // 
          // dgWorker
          // 
@@ -157,10 +156,10 @@ namespace Project_XPTO
          // 
          // Column1
          // 
-         dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle4.Format = "0000";
-         dataGridViewCellStyle4.NullValue = null;
-         this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+         dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle1.Format = "0000";
+         dataGridViewCellStyle1.NullValue = null;
+         this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
          this.Column1.HeaderText = "ID";
          this.Column1.Name = "Column1";
          this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -183,20 +182,20 @@ namespace Project_XPTO
          // 
          // Column4
          // 
-         dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle5.Format = "999,999,999-99";
-         dataGridViewCellStyle5.NullValue = null;
-         this.Column4.DefaultCellStyle = dataGridViewCellStyle5;
+         dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle2.Format = "999,999,999-99";
+         dataGridViewCellStyle2.NullValue = null;
+         this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
          this.Column4.HeaderText = "CPF";
          this.Column4.Name = "Column4";
          this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
          // 
          // Column5
          // 
-         dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle6.Format = "##/##/####";
-         dataGridViewCellStyle6.NullValue = null;
-         this.Column5.DefaultCellStyle = dataGridViewCellStyle6;
+         dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle3.Format = "##/##/####";
+         dataGridViewCellStyle3.NullValue = null;
+         this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
          this.Column5.HeaderText = "Data de Nascimento";
          this.Column5.Name = "Column5";
          this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;

@@ -9,7 +9,6 @@ namespace Controller
    public class Connection
    {
       private SQLiteConnection cx = new SQLiteConnection();
-      private SQLiteCommand com = new SQLiteCommand();
       private SQLiteDataAdapter da = new SQLiteDataAdapter();
 
       string path = $"Data Source = {AppDomain.CurrentDomain.BaseDirectory}/DB/DB_XPTO.db";
@@ -28,10 +27,17 @@ namespace Controller
       public void InsertWorker(Worker worker)
       {
          OpenDB();
-         string sql = $"INSERT INTO TB_Worker (Nome, Email, Cpf, DataNascimento) VALUES ('{worker.Nome}', '{worker.Email}', '{worker.Cpf}', '{worker.DataNascimeto}')";
 
-         com.CommandText = sql;
-         com.Connection = cx;
+         var com = cx.CreateCommand();
+
+         com.CommandText = $"INSERT INTO TB_Worker (Nome, Email, Cpf, DataNascimento) VALUES (@Nome, @Email, @Cpf, @DataNascimento)";
+         com.Prepare();
+
+         com.Parameters.AddWithValue("@Nome", worker.Nome);
+         com.Parameters.AddWithValue("@Email", worker.Email);
+         com.Parameters.AddWithValue("@Cpf", worker.Cpf);
+         com.Parameters.AddWithValue("@DataNascimento", worker.DataNascimeto);
+
          com.ExecuteNonQuery();
 
          CloseDB();
@@ -40,7 +46,8 @@ namespace Controller
       public List<Worker> GetAllWorker()
       {
          OpenDB();
-         string sql = "SELECT Id_Worker, Nome, Email, Cpf, DataNascimento FROM TB_Worker";
+         var com = cx.CreateCommand();
+         string sql = "SELECT Id_Worker, Nome, Email, Cpf, DataNascimento FROM TB_Worker order by DataNascimento";
          com.CommandText = sql;
          com.Connection = cx;
          SQLiteDataReader dr = com.ExecuteReader();
@@ -55,7 +62,7 @@ namespace Controller
                Nome = dr["Nome"].ToString(),
                Email = dr["Email"].ToString(),
                Cpf = dr["Cpf"].ToString(),
-               DataNascimeto = dr["DataNascimento"].ToString()
+               DataNascimeto = (DateTime) dr["DataNascimento"]
             };
             workerList.Add(worker);
          }
