@@ -45,9 +45,10 @@ namespace Controller
 
       public List<Worker> GetAllWorker()
       {
+         string sql = "SELECT Id_Worker, Nome, Email, Cpf, DataNascimento FROM TB_Worker order by DataNascimento";
+
          OpenDB();
          var com = cx.CreateCommand();
-         string sql = "SELECT Id_Worker, Nome, Email, Cpf, DataNascimento FROM TB_Worker order by DataNascimento";
          com.CommandText = sql;
          com.Connection = cx;
          SQLiteDataReader dr = com.ExecuteReader();
@@ -62,7 +63,7 @@ namespace Controller
                Nome = dr["Nome"].ToString(),
                Email = dr["Email"].ToString(),
                Cpf = dr["Cpf"].ToString(),
-               DataNascimeto = (DateTime) dr["DataNascimento"]
+               DataNascimeto = (DateTime)dr["DataNascimento"]
             };
             workerList.Add(worker);
          }
@@ -71,5 +72,27 @@ namespace Controller
          return workerList;
       }
 
+      public Worker GetWorker(int id)
+      {
+         string sql = $"SELECT Id_Worker, Nome, Email, Cpf, DataNascimento FROM TB_Worker WHERE ID_Worker = {id} ORDER BY Nome";
+
+         OpenDB();
+         var com = cx.CreateCommand();
+         com.CommandText = sql;
+         com.Connection = cx;
+         SQLiteDataReader dr = com.ExecuteReader();
+         Worker worker = new Worker();
+         while (dr.Read())
+         {
+            worker.Id = Convert.ToInt32(dr["Id_Worker"]);
+            worker.Nome = dr["Nome"].ToString();
+            worker.Email = dr["Email"].ToString();
+            worker.Cpf = dr["Cpf"].ToString();
+            worker.DataNascimeto = (DateTime)dr["DataNascimento"];
+         }
+         dr.Close();
+         CloseDB();
+         return worker;
+      }
    }
 }

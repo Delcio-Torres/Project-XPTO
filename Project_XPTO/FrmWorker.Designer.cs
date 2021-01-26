@@ -29,9 +29,9 @@ namespace Project_XPTO
       /// </summary>
       private void InitializeComponent()
       {
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+         System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
          this.button1 = new System.Windows.Forms.Button();
          this.txtNome = new System.Windows.Forms.TextBox();
          this.label1 = new System.Windows.Forms.Label();
@@ -47,6 +47,9 @@ namespace Project_XPTO
          this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
          this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+         this.button2 = new System.Windows.Forms.Button();
+         this.button3 = new System.Windows.Forms.Button();
+         this.button4 = new System.Windows.Forms.Button();
          ((System.ComponentModel.ISupportInitialize)(this.dgWorker)).BeginInit();
          this.SuspendLayout();
          // 
@@ -56,7 +59,7 @@ namespace Project_XPTO
          this.button1.Name = "button1";
          this.button1.Size = new System.Drawing.Size(75, 23);
          this.button1.TabIndex = 4;
-         this.button1.Text = "Salvar";
+         this.button1.Text = "&Salvar";
          this.button1.UseVisualStyleBackColor = true;
          this.button1.Click += new System.EventHandler(this.InsertWorker_Click);
          // 
@@ -153,13 +156,14 @@ namespace Project_XPTO
          this.dgWorker.Size = new System.Drawing.Size(558, 177);
          this.dgWorker.TabIndex = 6;
          this.dgWorker.TabStop = false;
+         this.dgWorker.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgWorker_CellDoubleClick);
          // 
          // Column1
          // 
-         dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle1.Format = "0000";
-         dataGridViewCellStyle1.NullValue = null;
-         this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
+         dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle7.Format = "0000";
+         dataGridViewCellStyle7.NullValue = null;
+         this.Column1.DefaultCellStyle = dataGridViewCellStyle7;
          this.Column1.HeaderText = "ID";
          this.Column1.Name = "Column1";
          this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -182,30 +186,60 @@ namespace Project_XPTO
          // 
          // Column4
          // 
-         dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle2.Format = "999,999,999-99";
-         dataGridViewCellStyle2.NullValue = null;
-         this.Column4.DefaultCellStyle = dataGridViewCellStyle2;
+         dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle8.Format = "999,999,999-99";
+         dataGridViewCellStyle8.NullValue = null;
+         this.Column4.DefaultCellStyle = dataGridViewCellStyle8;
          this.Column4.HeaderText = "CPF";
          this.Column4.Name = "Column4";
          this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
          // 
          // Column5
          // 
-         dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-         dataGridViewCellStyle3.Format = "##/##/####";
-         dataGridViewCellStyle3.NullValue = null;
-         this.Column5.DefaultCellStyle = dataGridViewCellStyle3;
+         dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+         dataGridViewCellStyle9.Format = "##/##/####";
+         dataGridViewCellStyle9.NullValue = null;
+         this.Column5.DefaultCellStyle = dataGridViewCellStyle9;
          this.Column5.HeaderText = "Data de Nascimento";
          this.Column5.Name = "Column5";
          this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
          this.Column5.Width = 128;
+         // 
+         // button2
+         // 
+         this.button2.Location = new System.Drawing.Point(313, 112);
+         this.button2.Name = "button2";
+         this.button2.Size = new System.Drawing.Size(75, 23);
+         this.button2.TabIndex = 7;
+         this.button2.Text = "&Sair";
+         this.button2.UseVisualStyleBackColor = true;
+         // 
+         // button3
+         // 
+         this.button3.Location = new System.Drawing.Point(151, 112);
+         this.button3.Name = "button3";
+         this.button3.Size = new System.Drawing.Size(75, 23);
+         this.button3.TabIndex = 7;
+         this.button3.Text = "&Atualizar";
+         this.button3.UseVisualStyleBackColor = true;
+         // 
+         // button4
+         // 
+         this.button4.Location = new System.Drawing.Point(232, 112);
+         this.button4.Name = "button4";
+         this.button4.Size = new System.Drawing.Size(75, 23);
+         this.button4.TabIndex = 7;
+         this.button4.Text = "&Excluir";
+         this.button4.UseVisualStyleBackColor = true;
          // 
          // FrmWorker
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
          this.ClientSize = new System.Drawing.Size(558, 322);
+         this.Controls.Add(this.button3);
+         this.Controls.Add(this.button4);
+         this.Controls.Add(this.button2);
          this.Controls.Add(this.dgWorker);
          this.Controls.Add(this.mskDataNascimento);
          this.Controls.Add(this.mskCpf);
@@ -242,6 +276,9 @@ namespace Project_XPTO
       private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
       private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
       private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+      private System.Windows.Forms.Button button2;
+      private System.Windows.Forms.Button button3;
+      private System.Windows.Forms.Button button4;
    }
 }
 

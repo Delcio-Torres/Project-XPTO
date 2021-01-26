@@ -34,7 +34,7 @@ namespace Project_XPTO
          var list = cx.GetAllWorker();
          dgWorker.Rows.Clear();
 
-         foreach(Worker teste in list)
+         foreach (Worker teste in list)
          {
             dgWorker.Rows.Add(
                teste.Id,
@@ -45,5 +45,20 @@ namespace Project_XPTO
             );
          }
       }
+
+      private void dgWorker_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+      {
+         if (e.RowIndex<0) return;
+       
+         int id = Convert.ToInt32(dgWorker.Rows[e.RowIndex].Cells[0].Value);
+         Worker worker = cx.GetWorker(id);
+
+         txtNome.Text = worker.Nome;
+         txtEmail.Text = worker.Email;
+         mskCpf.Text = worker.Cpf;
+         mskDataNascimento.Text = worker.DataNascimeto.ToString();
+
+      }
+
    }
 }
