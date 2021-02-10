@@ -6,59 +6,61 @@ using System.Windows.Forms;
 
 namespace Project_XPTO
 {
-   public partial class FrmWorker : Form
-   {
-      private Connection cx = new Connection();
+    public partial class FrmWorker : Form
+    {
+        private readonly Operations _operations;
 
-      public FrmWorker()
-      {
-         InitializeComponent();
-         PreencheDataGrid();
-      }
+        public FrmWorker()
+        {
+            _operations = new Operations();
 
-      private void InsertWorker_Click(object sender, System.EventArgs e)
-      {
-         Worker worker = new Worker
-         {
-            Nome = txtNome.Text,
-            Email = txtEmail.Text,
-            Cpf = mskCpf.Text,
-            DataNascimeto = DateTime.ParseExact(mskDataNascimento.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)
-         };
-         cx.InsertWorker(worker);
-         PreencheDataGrid();
-      }
+            InitializeComponent();
+            PreencheDataGrid();
+        }
 
-      public void PreencheDataGrid()
-      {
-         var list = cx.GetAllWorker();
-         dgWorker.Rows.Clear();
+        private void InsertWorker_Click(object sender, System.EventArgs e)
+        {
+            Worker worker = new Worker
+            {
+                Nome = txtNome.Text,
+                Email = txtEmail.Text,
+                Cpf = mskCpf.Text,
+                DataNascimeto = DateTime.ParseExact(mskDataNascimento.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture)
+            };
+            _operations.InsertWorker(worker);
+            PreencheDataGrid();
+        }
 
-         foreach (Worker teste in list)
-         {
-            dgWorker.Rows.Add(
-               teste.Id,
-               teste.Nome,
-               teste.Email,
-               Convert.ToUInt64(teste.Cpf).ToString(@"000\.000\.000\-00"),
-               teste.DataNascimeto.ToString("dd/MM/yyyy")
-            );
-         }
-      }
+        public void PreencheDataGrid()
+        {
+            var list = _operations.GetAllWorker();
+            dgWorker.Rows.Clear();
 
-      private void dgWorker_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-      {
-         if (e.RowIndex<0) return;
-       
-         int id = Convert.ToInt32(dgWorker.Rows[e.RowIndex].Cells[0].Value);
-         Worker worker = cx.GetWorker(id);
+            foreach (Worker teste in list)
+            {
+                dgWorker.Rows.Add(
+                   teste.Id,
+                   teste.Nome,
+                   teste.Email,
+                   Convert.ToUInt64(teste.Cpf).ToString(@"000\.000\.000\-00"),
+                   teste.DataNascimeto.ToString("dd/MM/yyyy")
+                );
+            }
+        }
 
-         txtNome.Text = worker.Nome;
-         txtEmail.Text = worker.Email;
-         mskCpf.Text = worker.Cpf;
-         mskDataNascimento.Text = worker.DataNascimeto.ToString();
+        private void dgWorker_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
 
-      }
+            int id = Convert.ToInt32(dgWorker.Rows[e.RowIndex].Cells[0].Value);
+            Worker worker = _operations.GetWorker(id);
 
-   }
+            txtNome.Text = worker.Nome;
+            txtEmail.Text = worker.Email;
+            mskCpf.Text = worker.Cpf;
+            mskDataNascimento.Text = worker.DataNascimeto.ToString();
+
+        }
+
+    }
 }

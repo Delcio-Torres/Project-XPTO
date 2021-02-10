@@ -3,96 +3,71 @@ using Model;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Data.SQLite;
+using System.IO;
 
 namespace Controller
 {
-   public class Connection
-   {
-      private SQLiteConnection cx = new SQLiteConnection();
-      private SQLiteDataAdapter da = new SQLiteDataAdapter();
+    public class Connection
+    {
+        private const string file = "DB_XPTO.db";
+        private readonly string path;
 
-      string path = $"Data Source = {AppDomain.CurrentDomain.BaseDirectory}/DB/DB_XPTO.db";
+        public SQLiteConnection Conn { get; }
 
-      public void OpenDB()
-      {
-         cx.ConnectionString = path;
-         cx.Open();
-      }
+        public Connection()
+        {
+            Conn = new SQLiteConnection();
+            path = $"{AppDomain.CurrentDomain.BaseDirectory}/DB";
 
-      public void CloseDB()
-      {
-         cx.Close();
-      }
+            OpenDB();
 
-      public void InsertWorker(Worker worker)
-      {
-         OpenDB();
+            CreateTables();
 
-         var com = cx.CreateCommand();
+            CloseDB();
+        }
+            
+        public void OpenDB()
+        {
+            string fullPath = $"{path}/{file}";
 
-         com.CommandText = $"INSERT INTO TB_Worker (Nome, Email, Cpf, DataNascimento) VALUES (@Nome, @Email, @Cpf, @DataNascimento)";
-         com.Prepare();
-
-         com.Parameters.AddWithValue("@Nome", worker.Nome);
-         com.Parameters.AddWithValue("@Email", worker.Email);
-         com.Parameters.AddWithValue("@Cpf", worker.Cpf);
-         com.Parameters.AddWithValue("@DataNascimento", worker.DataNascimeto);
-
-         com.ExecuteNonQuery();
-
-         CloseDB();
-      }
-
-      public List<Worker> GetAllWorker()
-      {
-         string sql = "SELECT Id_Worker, Nome, Email, Cpf, DataNascimento FROM TB_Worker order by DataNascimento";
-
-         OpenDB();
-         var com = cx.CreateCommand();
-         com.CommandText = sql;
-         com.Connection = cx;
-         SQLiteDataReader dr = com.ExecuteReader();
-
-         List<Worker> workerList = new List<Worker>();
-
-         while (dr.Read())
-         {
-            Worker worker = new Worker
+            if (!Directory.Exists(path))
             {
-               Id = Convert.ToInt32(dr["Id_Worker"]),
-               Nome = dr["Nome"].ToString(),
-               Email = dr["Email"].ToString(),
-               Cpf = dr["Cpf"].ToString(),
-               DataNascimeto = (DateTime)dr["DataNascimento"]
-            };
-            workerList.Add(worker);
-         }
-         dr.Close();
-         CloseDB();
-         return workerList;
-      }
+                Directory.CreateDirectory(path);
+            }
 
-      public Worker GetWorker(int id)
-      {
-         string sql = $"SELECT Id_Worker, Nome, Email, Cpf, DataNascimento FROM TB_Worker WHERE ID_Worker = {id} ORDER BY Nome";
+            if (!File.Exists(fullPath))
+            {
+                File.Create(fullPath).Close();
+            }
 
-         OpenDB();
-         var com = cx.CreateCommand();
-         com.CommandText = sql;
-         com.Connection = cx;
-         SQLiteDataReader dr = com.ExecuteReader();
-         Worker worker = new Worker();
-         while (dr.Read())
-         {
-            worker.Id = Convert.ToInt32(dr["Id_Worker"]);
-            worker.Nome = dr["Nome"].ToString();
-            worker.Email = dr["Email"].ToString();
-            worker.Cpf = dr["Cpf"].ToString();
-            worker.DataNascimeto = (DateTime)dr["DataNascimento"];
-         }
-         dr.Close();
-         CloseDB();
-         return worker;
-      }
-   }
+            Conn.ConnectionString = $"Data Source = {fullPath}";
+            Conn.Open();
+        }
+
+        public void CloseDB()
+        {
+            if(Conn.State != System.Data.ConnectionState.Closed)
+            {
+                Conn.Close();
+            }
+        }
+
+        private void CreateTables()
+        {
+            var query = @"
+            CREATE TABLE IF NOT EXISTS TB_Worker(
+                Id_Worker INTEGER PRIMARY KEY AUTOINCREMENT,
+                Nome TEXT,
+                Email TEXT,
+                Cpf TEXT,
+                DataNascimento DATE
+            )";
+
+            var com = Conn.CreateCommand();
+            com.CommandText = query;
+            com.Prepare();
+
+            com.ExecuteNonQuery();
+        }
+    }
 }
